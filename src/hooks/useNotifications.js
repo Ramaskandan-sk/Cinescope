@@ -8,8 +8,8 @@ export const useNotifications = (user) => {
   useEffect(() => {
     if (user) {
       fetchNotifications()
-      // Poll for new notifications every 30 seconds
-      const interval = setInterval(fetchNotifications, 30000)
+      // Poll for new notifications every 60 seconds (reduced from 30)
+      const interval = setInterval(fetchNotifications, 60000)
       return () => clearInterval(interval)
     }
   }, [user])
@@ -20,11 +20,16 @@ export const useNotifications = (user) => {
       const { data } = await axios.get('/api/notifications', {
         headers: { Authorization: `Bearer ${token}` }
       })
-      setNotifications(data)
-      const unread = data.filter(n => !n.read).length
+      
+      // Ensure data is an array
+      const notificationsArray = Array.isArray(data) ? data : []
+      setNotifications(notificationsArray)
+      const unread = notificationsArray.filter(n => !n.read).length
       setUnreadCount(unread)
     } catch (error) {
       console.error('Error fetching notifications:', error)
+      setNotifications([])
+      setUnreadCount(0)
     }
   }
 

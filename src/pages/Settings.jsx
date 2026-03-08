@@ -49,7 +49,7 @@ const Settings = () => {
       }
       
       console.log('Fetching watchlist for export...')
-      const { data } = await axios.get('/api/watchlist', {
+      const { data } = await axios.get('/api/watchlist/me', {
         headers: { Authorization: `Bearer ${token}` }
       })
       
@@ -119,7 +119,7 @@ const Settings = () => {
       
       // Fetch all user data
       const [watchlistRes, reviewsRes] = await Promise.all([
-        axios.get('/api/watchlist', { 
+        axios.get('/api/watchlist/me', { 
           headers: { Authorization: `Bearer ${token}` } 
         }).catch(err => {
           console.error('Watchlist fetch error:', err)

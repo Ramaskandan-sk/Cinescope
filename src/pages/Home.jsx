@@ -87,9 +87,18 @@ const Home = () => {
               {activeTab === 'movies' && (
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="lg:hidden btn-secondary"
+                  className="flex items-center space-x-2 px-4 py-2 bg-dark-700 hover:bg-dark-600 border border-dark-600 hover:border-primary-500 text-white rounded-lg transition-all duration-200 group"
                 >
-                  🔍 Filters
+                  <svg 
+                    className={`w-5 h-5 transition-transform duration-300 ${showFilters ? 'rotate-180' : ''}`} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                  </svg>
+                  <span className="hidden sm:inline">Filters</span>
+                  <span className="sm:hidden">🔍</span>
                 </button>
               )}
             </div>

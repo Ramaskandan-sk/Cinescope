@@ -29,6 +29,18 @@ const Profile = () => {
     }
   }, [user])
 
+  // Refresh data when returning to profile
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden && user) {
+        fetchUserData()
+      }
+    }
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [user])
+
   const fetchUserData = async () => {
     if (!user) {
       console.log('No user found, skipping data fetch')
@@ -56,7 +68,7 @@ const Profile = () => {
           console.error('Error fetching reviews:', err.response?.data || err.message)
           return { data: [] }
         }),
-        axios.get('/api/watchlist', { headers }).catch(err => {
+        axios.get('/api/watchlist/me', { headers }).catch(err => {
           console.error('Error fetching watchlist:', err.response?.data || err.message)
           return { data: [] }
         }),
@@ -155,9 +167,26 @@ const Profile = () => {
                     <span>Joined {new Date(user?.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
                   </p>
                 </div>
-                <Link to="/settings" className="btn-ghost mt-4 md:mt-0">
-                  ⚙️ Edit Profile
-                </Link>
+                <div className="flex items-center space-x-4">
+                  <Link to="/settings" className="btn-ghost">
+                    ⚙️ Edit Profile
+                  </Link>
+                  <button
+                    onClick={fetchUserData}
+                    disabled={loading}
+                    className="p-2 hover:bg-dark-700 rounded-lg transition-colors group"
+                    title="Refresh profile data"
+                  >
+                    <svg 
+                      className={`w-5 h-5 text-gray-400 group-hover:text-white transition-colors ${loading ? 'animate-spin' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               {/* Stats Grid */}
