@@ -17,8 +17,14 @@ A modern, feature-rich movie discussion and review platform built with React, No
 - 🎭 **Genre Explorer** - Browse by 10+ movie genres
 - 🔍 **Advanced Search** - Filter by year, rating, genre, and more
 - 📱 **Responsive Design** - Perfect on all devices
-- 🌙 **Dark Theme** - Professional dark UI with accent colors
+- 🌙 **Dark/Light Theme** - Theme customization (dark mode active)
 - ⚡ **Fast Performance** - Optimized loading and animations
+- 🔔 **Real-time Notifications** - Stay updated with activity
+- 💬 **Group Chats** - Create and join movie discussion groups
+- 👥 **Social Features** - Follow users, like content
+- 🔒 **Password Reset** - Secure account recovery
+- 📦 **Data Export** - Export watchlist and user data
+- ⚙️ **Comprehensive Settings** - Full control over your experience
 
 ### 🤖 AI-Powered
 - 📊 **Sentiment Analysis** - Automatic review mood detection

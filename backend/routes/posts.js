@@ -45,6 +45,18 @@ router.get('/movie/:movieId', async (req, res) => {
   }
 })
 
+// Get user's posts
+router.get('/user/me', protect, async (req, res) => {
+  try {
+    const posts = await Post.find({ userId: req.user._id })
+      .populate('movieId', 'title')
+      .sort({ createdAt: -1 })
+    res.json(posts)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
 router.post('/:id/vote', protect, async (req, res) => {
   try {
     const { value } = req.body

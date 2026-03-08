@@ -75,3 +75,77 @@
     @apply text-gray-600;
   }
 }
+
+@layer utilities {
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3), 0 0 40px rgba(251, 191, 36, 0.2);
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Toggle Switch Styles */
+  .toggle {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-800;
+    appearance: none;
+    cursor: pointer;
+    background-color: #374151;
+  }
+  
+  .toggle:checked {
+    background-color: #ef4444;
+  }
+  
+  .toggle::before {
+    content: '';
+    @apply absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white transition-transform;
+  }
+  
+  .toggle:checked::before {
+    transform: translateX(1.25rem);
+  }
+  
+  /* Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+  
+  /* Light Mode Support (for future) */
+  .light {
+    @apply bg-gray-50 text-gray-900;
+  }
+  
+  .light .card {
+    @apply bg-white border-gray-200;
+  }
+  
+  .light .input-field {
+    @apply bg-gray-100 border-gray-300 text-gray-900;
+  }
+}

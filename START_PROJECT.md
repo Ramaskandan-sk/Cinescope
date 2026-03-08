@@ -108,9 +108,33 @@ curl http://localhost:5000/api/health
 1. Visit http://localhost:3000
 2. Click "Get Started Free" to register
 3. Browse movies at /home
-4. Login as admin at /admin to add movies
-5. Write reviews and join discussions!
+4. Write reviews and join discussions
+5. Follow other users and like their content
+6. Check notifications for updates
+7. Create group chats with other users
+8. Login as admin at /admin to add movies
+
+## ✨ New Features Available
+
+### Social Features
+- **Follow Users**: Click on usernames to view profiles and follow
+- **Like Content**: Like reviews and discussion posts
+- **User Profiles**: View user stats, followers, and following
+
+### Notifications
+- **Real-time Updates**: Notification bell shows unread count
+- **Filter Options**: View all, unread, or read notifications
+- **Types**: Follow, like, comment, and mention notifications
+
+### Group Chats
+- **Create Chats**: Start group conversations with multiple users
+- **Real-time Messaging**: Send and receive messages instantly
+- **Unread Indicators**: See which chats have new messages
+
+### Password Reset
+- **Forgot Password**: Reset your password via email
+- **Secure Tokens**: Token-based reset system with expiration
 
 ---
 
-**Need Help?** Check the README.md for more details.
+**Need Help?** Check the README.md or FEATURES_IMPLEMENTATION.md for more details.

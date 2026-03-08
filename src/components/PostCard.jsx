@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
+import LikeButton from './LikeButton'
 import axios from 'axios'
 
 const PostCard = ({ post }) => {
@@ -130,12 +131,16 @@ const PostCard = ({ post }) => {
           <div className="flex items-center justify-between pt-3 border-t border-dark-700">
             <div className="flex items-center space-x-4 text-sm text-gray-400">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-xs">
-                  {post.userId?.username?.[0]?.toUpperCase() || 'U'}
-                </div>
-                <span className="font-medium">
-                  {post.userId?.username || 'Anonymous'}
-                </span>
+                <Link to={`/user/${post.userId?._id}`}>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-xs cursor-pointer hover:scale-110 transition-transform">
+                    {post.userId?.username?.[0]?.toUpperCase() || 'U'}
+                  </div>
+                </Link>
+                <Link to={`/user/${post.userId?._id}`}>
+                  <span className="font-medium hover:text-primary-400 transition-colors cursor-pointer">
+                    {post.userId?.username || 'Anonymous'}
+                  </span>
+                </Link>
               </div>
               <span>•</span>
               <span>{new Date(post.createdAt).toLocaleDateString()}</span>
@@ -158,6 +163,13 @@ const PostCard = ({ post }) => {
                 <span>💬</span>
                 <span>0 comments</span>
               </div>
+              {user && (
+                <LikeButton
+                  contentType="post"
+                  contentId={post._id}
+                  initialLikes={post.likes || 0}
+                />
+              )}
             </div>
           </div>
         </div>

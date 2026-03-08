@@ -1,21 +1,11 @@
 import { useState, useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
+import LikeButton from './LikeButton'
 import axios from 'axios'
 
 const ReviewCard = ({ review, onUpdate }) => {
   const { user } = useContext(AuthContext)
-  const [liked, setLiked] = useState(false)
-  const [likes, setLikes] = useState(review.likes || 0)
-
-  const handleLike = async () => {
-    try {
-      await axios.post(`/api/reviews/${review._id}/like`)
-      setLiked(!liked)
-      setLikes(liked ? likes - 1 : likes + 1)
-    } catch (error) {
-      console.error('Error liking review:', error)
-    }
-  }
 
   const getSentimentColor = (sentiment) => {
     switch (sentiment) {
@@ -30,11 +20,17 @@ const ReviewCard = ({ review, onUpdate }) => {
     <div className="card p-6 space-y-4">
       <div className="flex items-start justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold">
-            {review.userId?.username?.[0]?.toUpperCase() || 'U'}
-          </div>
+          <Link to={`/user/${review.userId?._id}`}>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold cursor-pointer hover:scale-110 transition-transform">
+              {review.userId?.username?.[0]?.toUpperCase() || 'U'}
+            </div>
+          </Link>
           <div>
-            <p className="font-semibold text-white">{review.userId?.username || 'Anonymous'}</p>
+            <Link to={`/user/${review.userId?._id}`}>
+              <p className="font-semibold text-white hover:text-primary-400 transition-colors cursor-pointer">
+                {review.userId?.username || 'Anonymous'}
+              </p>
+            </Link>
             <p className="text-xs text-gray-400">
               {new Date(review.createdAt).toLocaleDateString()}
             </p>
@@ -68,13 +64,11 @@ const ReviewCard = ({ review, onUpdate }) => {
         </div>
         
         {user && (
-          <button
-            onClick={handleLike}
-            className={`flex items-center space-x-1 ${liked ? 'text-primary-500' : 'text-gray-400'} hover:text-primary-500 transition`}
-          >
-            <span>{liked ? '❤️' : '🤍'}</span>
-            <span>{likes}</span>
-          </button>
+          <LikeButton
+            contentType="review"
+            contentId={review._id}
+            initialLikes={review.likes || 0}
+          />
         )}
       </div>
     </div>

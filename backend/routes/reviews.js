@@ -49,6 +49,18 @@ router.get('/user/me', protect, async (req, res) => {
   }
 })
 
+// Get reviews by user ID (public)
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const reviews = await Review.find({ userId: req.params.userId })
+      .populate('movieId', 'title poster')
+      .sort({ createdAt: -1 })
+    res.json(reviews)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
 router.post('/:id/like', protect, async (req, res) => {
   try {
     const review = await Review.findByIdAndUpdate(
