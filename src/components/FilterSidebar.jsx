@@ -53,21 +53,21 @@ const FilterSidebar = ({ onFilterChange, isOpen, onClose }) => {
       {/* Overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden animate-fade-in"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 animate-fade-in"
           onClick={onClose}
         />
       )}
       
       {/* Sidebar */}
       <div className={`
-        fixed lg:sticky top-20 left-0 h-[calc(100vh-5rem)] lg:h-auto w-80 lg:w-72
+        fixed top-20 left-0 h-[calc(100vh-5rem)] w-80
         bg-dark-800/95 backdrop-blur-md border-r border-dark-700/50 z-50
         transform transition-all duration-300 ease-out
         overflow-y-auto scrollbar-thin
-        ${isOpen ? 'translate-x-0 shadow-2xl lg:mr-6' : '-translate-x-full lg:-translate-x-0 lg:w-0 lg:mr-0 lg:border-0 lg:p-0 lg:overflow-hidden'}
+        ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}
       `}>
         {/* Header */}
-        <div className={`sticky top-0 bg-dark-800/95 backdrop-blur-md border-b border-dark-700/50 p-6 z-10 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'lg:opacity-0'}`}>
+        <div className={`sticky top-0 bg-dark-800/95 backdrop-blur-md border-b border-dark-700/50 p-6 z-10 transition-opacity duration-300`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <span className="text-2xl">🎯</span>
@@ -89,7 +89,7 @@ const FilterSidebar = ({ onFilterChange, isOpen, onClose }) => {
           </div>
         </div>
 
-        <div className={`p-6 space-y-6 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'lg:opacity-0'}`}>
+        <div className={`p-6 space-y-6 transition-opacity duration-300`}>
           {/* Genre Filter */}
           <div className="space-y-3">
             <label className="flex items-center space-x-2 text-sm font-semibold text-gray-200">

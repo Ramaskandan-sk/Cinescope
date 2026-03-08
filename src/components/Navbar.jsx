@@ -1,7 +1,8 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import { useNotifications } from '../hooks/useNotifications'
+import Logo from './Logo'
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext)
@@ -28,12 +29,8 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="text-4xl group-hover:scale-110 transition-transform duration-300">🎬</div>
-            <div className="flex flex-col">
-              <span className="text-2xl font-black gradient-text">CineScope</span>
-              <span className="text-xs text-gray-400 -mt-1">Movie Community</span>
-            </div>
+          <Link to="/" className="group">
+            <Logo size="md" showText={true} />
           </Link>
 
           {/* Desktop Navigation */}

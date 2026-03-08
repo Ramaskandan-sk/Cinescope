@@ -58,7 +58,7 @@ const Home = () => {
   ]
 
   return (
-    <div className="flex">
+    <div className="min-h-screen">
       {/* Filter Sidebar */}
       {activeTab === 'movies' && (
         <FilterSidebar
@@ -69,7 +69,7 @@ const Home = () => {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 container-custom section-padding">
+      <div className="container-custom section-padding">
         {/* Header */}
         <div className="mb-12">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
