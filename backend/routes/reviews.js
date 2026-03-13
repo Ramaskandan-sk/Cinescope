@@ -103,16 +103,16 @@ async function updateMovieRating(movieId) {
 }
 
 function analyzeSentiment(text) {
-  const positive = ['great', 'amazing', 'excellent', 'love', 'best', 'wonderful', 'fantastic']
-  const negative = ['bad', 'terrible', 'worst', 'hate', 'awful', 'boring', 'disappointing']
+  const positive = ['great', 'amazing', 'excellent', 'love', 'best', 'wonderful', 'fantastic', 'good', 'awesome', 'perfect']
+  const negative = ['bad', 'terrible', 'worst', 'hate', 'awful', 'boring', 'disappointing', 'poor', 'waste']
   
   const lowerText = text.toLowerCase()
   const posCount = positive.filter(word => lowerText.includes(word)).length
   const negCount = negative.filter(word => lowerText.includes(word)).length
   
-  if (posCount > negCount) return 'Positive'
+  // Default to Positive if equal or no sentiment words found
   if (negCount > posCount) return 'Negative'
-  return 'Mixed'
+  return 'Positive'
 }
 
 function detectSpoiler(text) {

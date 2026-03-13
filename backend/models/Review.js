@@ -23,8 +23,8 @@ const reviewSchema = new mongoose.Schema({
   },
   sentiment: {
     type: String,
-    enum: ['Positive', 'Negative', 'Mixed'],
-    default: 'Mixed'
+    enum: ['Positive', 'Negative'],
+    default: 'Positive'
   },
   spoilerFlag: {
     type: Boolean,
