@@ -704,7 +704,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [GitHub](https://github.com/yourusername)
+- **Ananya R Shastry** - [GitHub](https://github.com/Ramaskandan-sk)
+- **Ramaskandan sk** - [GitHub](https://github.com/Ramaskandan-sk)
 
 ---
 
@@ -716,12 +717,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - [Express.js](https://expressjs.com/) - Backend framework
 - [Vite](https://vitejs.dev/) - Build tool
 - [TMDB](https://www.themoviedb.org/) - Movie data (if applicable)
-
----
-
-## 📞 Support
-
-For support, email support@cinescope.com or join our Slack channel.
 
 ---
 
