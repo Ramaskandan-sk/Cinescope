@@ -704,7 +704,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 👥 Authors
 
-- **Ananya R Shastry** - [GitHub](https://github.com/Ramaskandan-sk)
+- **Ananya R Shastry** - [GitHub](https://github.com/ananyashastry2005)
 - **Ramaskandan sk** - [GitHub](https://github.com/Ramaskandan-sk)
 
 ---
